@@ -85,11 +85,30 @@
         }
 
         .emoji-small {
-            font-size: 0.8em; /* Make emojis smaller */
+            font-size: 0.7em; /* Make emojis smaller */
             vertical-align: middle;
         }
 
-        .event-details-list strong {
+        .event-details-container {
+            text-align: center; /* Center the ul within this div */
+        }
+
+        .event-details-container ul {
+            list-style: none; /* Remove bullet points */
+            padding: 0;
+            margin: 0 auto; /* Center the list itself */
+            display: inline-block; /* Allow margin auto to work for centering */
+            text-align: left; /* Align list items to the left */
+        }
+
+        .event-details-container li {
+            margin-bottom: 5px;
+            color: #666; /* Lighter color for body text */
+            font-size: 1.1em; /* Increased font size */
+            line-height: 1.6;
+        }
+
+        .event-details-container strong {
             font-weight: normal; /* Reduce font weight */
             color: #6A0DAD; /* Deep purple color */
         }
@@ -273,14 +292,20 @@
         <h1>Snigdha's Ceremony</h1>
 
         <div class="image-container">
-            <img src="girlnew.jpg" alt="Snigdha" class="girl-image">
+            <img src="girlnew1.jpg" alt="Snigdha" class="girl-image">
         </div>
 
         <p>Your presence would make this truly special as we celebrate a momentous occasion in Snigdha's life.</p>
 
         <h2>Event Details</h2>
-        <p class="event-details-list"><span class="emoji-small">📅</span> <strong>Date:</strong> [Insert Date Here]<br><span class="emoji-small">⏰</span> <strong>Time:</strong> [Insert Time Here]<br><span class="emoji-small">📍</span> <strong>Venue:</strong> Our Home</p>
-        <p><em>Attire: Traditional Indian wear encouraged.</em></p>
+        <div class="event-details-container">
+            <ul>
+                <li><span class="emoji-small">📅</span> <strong>Date:</strong> [Insert Date Here]</li>
+                <li><span class="emoji-small">⏰</span> <strong>Time:</strong> [Insert Time Here]</li>
+                <li><span class="emoji-small">📍</span> <strong>Venue:</strong> Our Home</li>
+                <li><span class="emoji-small">🥻</span> <strong>Attire:</strong> Traditional Indian wear encouraged.</li>
+            </ul>
+        </div>
         <p><strong><em>This is a Ladies Only event.</em></strong></p>
 
         <h2>RSVP</h2>
