@@ -299,16 +299,18 @@
             document.querySelector('.container').appendChild(flower);
 
             // Remove flower after it falls to prevent DOM bloat
-            flower.addEventListener('animationend', () => {
-                flower.remove();
+            flower.addEventListener('animationiteration', () => {
+                flower.style.top = '-20px'; // Reset top position
+                flower.style.left = Math.random() * 100 + '%';
+                flower.style.animationDuration = Math.random() * 5 + 4 + 's'; // Re-randomize duration
+                flower.style.animationDelay = Math.random() * 2 + 's'; // Re-randomize delay
             });
         }
 
-        // Create a new flower every 300ms
-        setInterval(createFlower, 300);
+        
 
         // Create some initial flowers
-        for (let i = 0; i < 20; i++) {
+        for (let i = 0; i < 50; i++) {
             createFlower();
         }
     </script>
