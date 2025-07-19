@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Celebration</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&family=Montserrat:wght@700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-green: #006400;
+            --color-red: #B22222;
+            --color-gold: #FFD700;
+            --color-text: #333;
+            --color-background-light: rgb(255,255,240);
+            --color-background-dark: rgb(253, 245, 230);
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            color: var(--color-text);
+            background: linear-gradient(to bottom right, #e0b0ff, #00ced1);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-sizing: border-box;
+            overflow-y: auto; /* Allow scrolling for content */
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.98); /* Whiter, slightly more opaque */
+            border: 5px solid var(--color-gold); /* Gold border */
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px;
+            max-width: 95%; /* Mobile-first: take up most of the width */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            box-sizing: border-box;
+            position: relative;
+            overflow: hidden; /* Keep flowers within the container */
+        }
+
+        h1, h2 {
+            font-family: 'Playfair Display', serif; /* Changed font to Playfair Display */
+            color: var(--color-red);
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            font-size: 2.2em;
+            color: var(--color-green); /* Title in green */
+        }
+
+        h2 {
+            font-size: 1.2em; /* Reduced font size for h2 */
+            color: var(--color-red); /* Section titles in red */
+        }
+
+        p {
+            font-family: 'Poppins', sans-serif; /* Changed font to Poppins */
+            font-size: 1.1em; /* Increased font size */
+            line-height: 1.6;
+            text-align: center;
+            margin-bottom: 10px;
+            color: #666; /* Lighter color for body text */
+        }
+
+        .gradient-text {
+            background: linear-gradient(to right, #FF69B4, #1E90FF); /* Hot Pink and Dodger Blue */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .emoji-small {
+            font-size: 0.8em; /* Make emojis smaller */
+            vertical-align: middle;
+        }
+
+        .event-details-list strong {
+            font-weight: normal; /* Reduce font weight */
+            color: #6A0DAD; /* Deep purple color */
+        }
+
+        .image-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .girl-image {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%; /* Circular image */
+            object-fit: cover;
+            border: 4px solid var(--color-gold);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        .rsvp-form {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px dashed var(--color-gold);
+        }
+
+        .rsvp-form label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--color-red);
+        }
+
+        .rsvp-form input[type="text"],
+        .rsvp-form input[type="email"],
+        .rsvp-form input[type="number"],
+        .rsvp-form select {
+            width: calc(100% - 20px); /* Adjust for padding */
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid var(--color-gold);
+            border-radius: 5px;
+            font-size: 1em;
+            box-sizing: border-box;
+        }
+
+        .rsvp-form button {
+            background-color: var(--color-green);
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            display: block;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .rsvp-form button:hover {
+            background-color: #004d00;
+        }
+
+        .flower {
+            position: absolute;
+            background-color: #FFC0CB; /* Light pink, can be randomized */
+            opacity: 0;
+            animation: fall linear infinite;
+            pointer-events: none; /* Allow clicks to pass through */
+            z-index: 1000; /* Ensure it's on top */
+            top: -20px; /* Start slightly above the container */
+            /* Flower shape */
+            width: 10px; /* Base size for the flower */
+            height: 10px;
+            border-radius: 50%;
+            transform-origin: center;
+        }
+
+        .flower::before,
+        .flower::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: inherit;
+            border-radius: 50%;
+        }
+
+        .flower::before {
+            transform: rotate(60deg);
+        }
+
+        .flower::after {
+            transform: rotate(120deg);
+        }
+
+        @keyframes fall {
+            0% {
+                top: -20px;
+                opacity: 0;
+                transform: translateX(0) rotate(0deg);
+            }
+            10% {
+                opacity: 0.8;
+            }
+            100% {
+                top: 100%; /* Fall to the bottom of the container */
+                opacity: 0;
+                transform: translateX(50px) rotate(720deg);
+            }
+        }
+
+        /* Desktop styles */
+        @media (min-width: 768px) {
+            .container {
+                max-width: 700px; /* Max width for desktop */
+                padding: 40px;
+            }
+
+            h1 {
+                font-size: 3em;
+            }
+
+            h2 {
+                font-size: 1.5em; /* Reduced font size for h2 on desktop */
+            }
+
+            .girl-image {
+                width: 220px;
+                height: 220px;
+            }
+
+            .rsvp-form input[type="text"],
+            .rsvp-form input[type="email"],
+            .rsvp-form input[type="number"],
+            .rsvp-form select {
+                width: calc(100% - 20px); /* Maintain width */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Snigdha's Ceremony</h1>
+
+        <div class="image-container">
+            <img src="girlnew.jpg" alt="Snigdha" class="girl-image">
+        </div>
+
+        <p>Your presence would make this truly special as we celebrate a momentous occasion in <span class="gradient-text">Snigdha</span>'s life.</p>
+
+        <h2>Event Details</h2>
+        <p class="event-details-list"><span class="emoji-small">📅</span> <strong>Date:</strong> [Insert Date Here]<br><span class="emoji-small">⏰</span> <strong>Time:</strong> [Insert Time Here]<br><span class="emoji-small">📍</span> <strong>Venue:</strong> Our Home</p>
+        <p><em>Attire: Traditional Indian wear encouraged.</em></p>
+        <p><strong><em>This is a Ladies Only event.</em></strong></p>
+
+        <h2>RSVP</h2>
+        <script type="text/javascript" src="https://form.jotform.com/jsform/251995854871071"></script>
+    </div>
+    <script>
+        function createFlower() {
+            const flower = document.createElement('div');
+            flower.classList.add('flower');
+            flower.style.width = Math.random() * 10 + 5 + 'px'; // Random size between 5px and 15px
+            flower.style.height = flower.style.width;
+            flower.style.left = Math.random() * 100 + '%'; // Random horizontal position relative to container
+            flower.style.animationDuration = Math.random() * 5 + 4 + 's'; // Random duration between 4s and 9s
+            flower.style.animationDelay = Math.random() * 2 + 's'; // Random delay
+            document.querySelector('.container').appendChild(flower);
+
+            // Remove flower after it falls to prevent DOM bloat
+            flower.addEventListener('animationend', () => {
+                flower.remove();
+            });
+        }
+
+        // Create a new flower every 300ms
+        setInterval(createFlower, 300);
+
+        // Create some initial flowers
+        for (let i = 0; i < 20; i++) {
+            createFlower();
+        }
+    </script>
+</body>
+</html>
