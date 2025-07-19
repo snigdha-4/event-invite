@@ -313,6 +313,18 @@
         for (let i = 0; i < 50; i++) {
             createFlower();
         }
+
+        const scrollIndicator = document.querySelector('.scroll-indicator');
+
+        window.addEventListener('scroll', () => {
+            if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+                // User has scrolled to the bottom
+                scrollIndicator.style.display = 'none';
+            } else {
+                // User is not at the bottom
+                scrollIndicator.style.display = 'flex';
+            }
+        });
     </script>
 </body>
 </html>
