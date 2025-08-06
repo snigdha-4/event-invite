@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Snigdha's Ceremony - RSVP Please</title>
-    <meta property="og:title" content="[date] - RSVP Please">
+    <meta property="og:title" content="August 17 - RSVP Please">
     <meta property="og:description" content="You are invited to Snigdha's Ceremony!">
     <meta property="og:image" content="https://snigdha-4.github.io/event-invite/og_image.png">
     <meta property="og:type" content="website">
@@ -305,15 +305,15 @@
         <h2>Event Details</h2>
         <div class="event-details-container">
             <ul>
-                <li><span class="emoji-small">📅</span> <strong>Date:</strong> [Insert Date Here]</li>
-                <li><span class="emoji-small">⏰</span> <strong>Time:</strong> [Insert Time Here]</li>
+                <li><span class="emoji-small">📅</span> <strong>Date:</strong> August 17th, 2025</li>
+                <li><span class="emoji-small">⏰</span> <strong>Time:</strong> 5:30 PM</li>
                 <li><span class="emoji-small">📍</span> <strong>Venue:</strong> Our Home</li>
                 <li><span class="emoji-small">🥻</span> <strong>Attire:</strong> Traditional Indian wear encouraged.</li>
             </ul>
         </div>
         <p><strong><em>This is a Ladies Only event.</em></strong></p>
 
-        <h2>RSVP</h2>
+        <h2>RSVP by August 14th</h2>
         <script type="text/javascript" src="https://form.jotform.com/jsform/251995854871071"></script>
     </div>
     <div class="scroll-indicator"></div>
@@ -345,6 +345,13 @@
         }
 
         const scrollIndicator = document.querySelector('.scroll-indicator');
+
+        scrollIndicator.addEventListener('click', () => {
+            window.scrollTo({
+                top: document.body.scrollHeight,
+                behavior: 'smooth'
+            });
+        });
 
         window.addEventListener('scroll', () => {
             if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
